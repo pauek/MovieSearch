@@ -2,9 +2,11 @@ package info.pauek.moviesearch;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.google.gson.Gson;
 
 import java.io.IOException;
@@ -26,6 +28,7 @@ public class MovieActivity extends AppCompatActivity {
     private TextView writerview;
     private TextView actorsview;
     private TextView plotview;
+    private ImageView posterview;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,5 +64,10 @@ public class MovieActivity extends AppCompatActivity {
         writerview.setText(movie.getWriter());
         actorsview.setText(movie.getActors().replace(", ", "\n"));
         plotview.setText(movie.getPlot());
+
+        posterview = findViewById(R.id.posterview);
+        Glide.with(this)
+                .load("file:///android_asset/poster.png")
+                .into(posterview);
     }
 }
